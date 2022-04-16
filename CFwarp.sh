@@ -111,7 +111,7 @@ result4=$(curl -4 --user-agent "${UA_Browser}" -fsL --write-out %{http_code} --o
 [[ "$result4" == "403" ]] && NF="死心了，当前IP不支持解锁奈飞Netflix....."
 [[ "$result4" == "000" ]] && NF="检测到网络有问题，再次进入脚本可能就好了.."
 [[ "$result4" == "200" ]] && NF="恭喜呀，当前IP可解锁奈飞Netflix流媒体..."
-g4=$(eval echo \$$(curl -s -A "Mozilla" https://api.ip.sb/geoip/$v4 -k | awk -F "country_code" '{print $2}' | awk -F "region_code" '{print $1}' | sed "s/[,\":}]//g"))
+g4=$(eval echo \$$(curl -s --user-agent "${UA_Browser}" https://api.ip.sb/geoip/$v4 -k | awk -F "country_code" '{print $2}' | awk -F "region_code" '{print $1}' | sed "s/[,\":}]//g"))
 wgcfv4=$(curl -s4 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2) 
 case ${wgcfv4} in 
 plus) 
@@ -130,7 +130,7 @@ result6=$(curl -6 --user-agent "${UA_Browser}" -fsL --write-out %{http_code} --o
 [[ "$result6" == "403" ]] && NF="死心了，当前IP不支持解锁奈飞Netflix....."
 [[ "$result6" == "000" ]] && NF="检测到网络有问题，再次进入脚本可能就好了.."
 [[ "$result6" == "200" ]] && NF="恭喜呀，当前IP可解锁奈飞Netflix流媒体..."
-g6=$(eval echo \$$(curl -s -A "Mozilla" https://api.ip.sb/geoip/$v6 -k | awk -F "country_code" '{print $2}' | awk -F "region_code" '{print $1}' | sed "s/[,\":}]//g"))
+g6=$(eval echo \$$(curl -s --user-agent "${UA_Browser}" https://api.ip.sb/geoip/$v6 -k | awk -F "country_code" '{print $2}' | awk -F "region_code" '{print $1}' | sed "s/[,\":}]//g"))
 wgcfv6=$(curl -s6 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2) 
 case ${wgcfv6} in 
 plus) 
