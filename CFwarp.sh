@@ -549,18 +549,21 @@ elif [[ $release = Debian ]]; then
 fi
 [[ $(warp-cli --accept-tos status 2>/dev/null) =~ 'Connected' ]] && red "当前Socks5-WARP已经在运行中" && bash CFwarp.sh
 systemctl stop wg-quick@wgcf >/dev/null 2>&1
-ShowWGCF
+v4v6
 if [[ -n $v6 && -z $v4 ]]; then
 systemctl start wg-quick@wgcf >/dev/null 2>&1
 red "纯IPV6的VPS目前不支持安装Socks5-WARP" && bash CFwarp.sh
 elif [[ -n $v4 && -z $v6 ]]; then
 systemctl start wg-quick@wgcf >/dev/null 2>&1
+checkwgcf
 [[ $wgcfv4 =~ on|plus && ! $wgcfv6 =~ on|plus ]] && red "纯IPV4的VPS已安装Wgcf-WARP-IPV4(选项1)，不支持安装Socks5-WARP" && bash CFwarp.sh
 elif [[ -n $v4 && -n $v6 ]]; then
 systemctl start wg-quick@wgcf >/dev/null 2>&1
+checkwgcf
 [[ $wgcfv4 =~ on|plus || $wgcfv6 =~ on|plus ]] && red "原生双栈VPS已安装Wgcf-WARP-IPV4/IPV6(选项1或选项2)，请先卸载。然后安装Socks5-WARP，最后安装Wgcf-WARP-IPV4/IPV6" && bash CFwarp.sh
 fi
 systemctl start wg-quick@wgcf >/dev/null 2>&1
+checkwgcf
 [[ $wgcfv4 =~ on|plus && $wgcfv6 =~ on|plus ]] && red "已安装Wgcf-WARP-IPV4+IPV6(选项3)，不支持安装Socks5-WARP" && bash CFwarp.sh
 if [[ $release = Centos ]]; then 
 yum -y install epel-release && yum -y install net-tools
