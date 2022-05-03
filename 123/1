@@ -4,7 +4,6 @@
 "tag":"IP4-out", 
 "protocol": "freedom",
 "settings": {
-"domainStrategy": "UseIPv4"
 }
 },
 {
