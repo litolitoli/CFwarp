@@ -1,0 +1,22 @@
+{
+"outbounds": [
+{
+"tag":"IP4-out", 
+"protocol": "freedom",
+"settings": {
+"domainStrategy": "UseIPv4"
+}
+},
+{
+"tag":"IP6-out",
+"protocol": "freedom",
+"settings": {
+"domainStrategy": "UseIPv6" 
+}
+},
+{
+"protocol":"blackhole",
+"tag":"blackhole-out"
+}
+]
+}
