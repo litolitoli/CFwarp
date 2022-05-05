@@ -170,3 +170,7 @@ warp-cli --accept-tos settings
 
 ---------------------------------------------------------------------------------------------------------
 #### 感谢P3terx，参考来源：https://github.com/P3TERX/warp.sh
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/kkkyg/CFwarp.svg)](https://starchart.cc/kkkyg/CFwarp)
