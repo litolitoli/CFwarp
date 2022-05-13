@@ -543,7 +543,7 @@ yellow "检测Socks5-WARP安装环境中……"
 if [[ $release = Centos ]]; then
 [[ ! ${vsid} =~ 8 ]] && yellow "当前系统版本号：Centos $vsid \nSocks5-WARP仅支持Centos 8 " && bash CFwarp.sh 
 elif [[ $release = Ubuntu ]]; then
-[[ ! ${vsid} =~ 16|18|20 ]] && yellow "当前系统版本号：Ubuntu $vsid \nSocks5-WARP仅支持 Ubuntu 16.04/18.04/20.04系统 " && bash CFwarp.sh 
+[[ ! ${vsid} =~ 16|18|20|22 ]] && yellow "当前系统版本号：Ubuntu $vsid \nSocks5-WARP仅支持 Ubuntu 16.04/18.04/20.04/22.04系统 " && bash CFwarp.sh 
 elif [[ $release = Debian ]]; then
 [[ ! ${vsid} =~ 9|10|11 ]] && yellow "当前系统版本号：Debian $vsid \nSocks5-WARP仅支持 Debian 9/10/11系统 " && bash CFwarp.sh 
 fi
