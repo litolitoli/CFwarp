@@ -566,6 +566,13 @@ systemctl start wg-quick@wgcf >/dev/null 2>&1
 checkwgcf
 [[ $wgcfv4 =~ on|plus && $wgcfv6 =~ on|plus ]] && red "已安装Wgcf-WARP-IPV4+IPV6(选项3)，不支持安装Socks5-WARP" && bash CFwarp.sh
 if [[ $release = Centos ]]; then 
+if [[ ${vsid} =~ 8 ]]; then
+cd /etc/yum.repos.d/ && mkdir backup && mv *repo backup/ 
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo
+sed -i -e "s|mirrors.cloud.aliyuncs.com|mirrors.aliyun.com|g " /etc/yum.repos.d/CentOS-*
+sed -i -e "s|releasever|releasever-stream|g" /etc/yum.repos.d/CentOS-*
+yum clean all && yum makecache
+fi
 yum -y install epel-release && yum -y install net-tools
 rpm -ivh http://pkg.cloudflareclient.com/cloudflare-release-el$vsid.rpm
 yum -y install cloudflare-warp
