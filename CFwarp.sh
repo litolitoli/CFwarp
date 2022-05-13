@@ -574,7 +574,7 @@ sed -i -e "s|releasever|releasever-stream|g" /etc/yum.repos.d/CentOS-*
 yum clean all && yum makecache
 fi
 yum -y install epel-release && yum -y install net-tools
-rpm -ivh http://pkg.cloudflareclient.com/cloudflare-release-el$vsid.rpm
+rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm
 yum -y install cloudflare-warp
 fi
 if [[ $release = Debian ]]; then
